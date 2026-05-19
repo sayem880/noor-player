@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a2f1f">
+    <meta name="description" content="Noor Player - Quran Audio Player with Mishary Rashid Alafasy recitation and Bengali translation">
+    <title>Noor Player | আল-কুরআন</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 id="siteTitle">📖 Noor Player</h1>
+            <p id="siteSubtitle">Mishary Rashid Alafasy | Bengali Translation Audio</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card">
+                <!-- Top Bar: Language + Repeat -->
+                <div class="top-bar">
+                    <div class="language-switch">
+                        <button class="lang-btn active" id="engLangBtn">EN</button>
+                        <button class="lang-btn" id="bnLangBtn">বাংলা</button>
+                    </div>
+                    <div class="repeat-switch">
+                        <button class="repeat-btn" id="repeatBtn" title="Repeat Mode">
+                            <span id="repeatIcon">🔁</span>
+                            <span id="repeatText" class="repeat-text">Off</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quality Switch -->
+                <div class="quality-container">
+                    <span class="quality-label" id="qualityLabel">🎵 Audio Quality</span>
+                    <div class="quality-switch">
+                        <button class="quality-btn" id="lowQualityBtn">📱 Low Quality</button>
+                        <button class="quality-btn active" id="highQualityBtn">💎 High Quality</button>
+                    </div>
+                    <span class="quality-note" id="qualityNote">High Quality (Wi-Fi recommended)</span>
+                </div>
+
+                <!-- Surah Selector -->
+                <div class="selector-group">
+                    <label for="surahSelect" id="surahLabel">Select Surah</label>
+                    <select id="surahSelect">
+                        <option>Loading...</option>
+                    </select>
+                </div>
+
+                <!-- Offline Management Row -->
+                <div class="offline-row" id="offlineRow">
+                    <div class="quality-control hq-control">
+                        <span class="quality-badge">HQ</span>
+                        <button class="offline-btn save-btn" id="saveHqBtn" data-quality="high">💾 Save</button>
+                        <button class="offline-btn delete-btn" id="deleteHqBtn" data-quality="high" style="display: none;">🗑️</button>
+                        <span class="saved-badge" id="hqSavedBadge" style="display: none;">✓</span>
+                    </div>
+                    <div class="quality-control lq-control">
+                        <span class="quality-badge">LQ</span>
+                        <button class="offline-btn save-btn" id="saveLqBtn" data-quality="low">💾 Save</button>
+                        <button class="offline-btn delete-btn" id="deleteLqBtn" data-quality="low" style="display: none;">🗑️</button>
+                        <span class="saved-badge" id="lqSavedBadge" style="display: none;">✓</span>
+                    </div>
+                </div>
+
+                <!-- Surah Info Display -->
+                <div class="surah-info" id="surahInfo">
+                    <div class="surah-name-bn" id="surahNameBn">Al-Fatiha</div>
+                    <div class="surah-name-ar" id="surahNameAr">الفاتحة</div>
+                    <div class="surah-details" id="surahDetails">Meccan | 7 Verses</div>
+                </div>
+
+                <!-- Player Controls -->
+                <div class="player-controls">
+                    <button class="control-btn skip-back" id="skipBackBtn" title="Back 15 seconds">⏪-15</button>
+                    <button class="control-btn" id="prevBtn" title="Previous Surah">⏮</button>
+                    <button class="control-btn play" id="playPauseBtn">▶</button>
+                    <button class="control-btn" id="nextBtn" title="Next Surah">⏭</button>
+                    <button class="control-btn skip-forward" id="skipForwardBtn" title="Forward 15 seconds">⏩+15</button>
+                </div>
+
+                <!-- Draggable Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-knob" id="progressKnob"></div>
+                    </div>
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span>
+                        <span id="totalTime">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="volume-container">
+                    <span class="volume-icon">🔊</span>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="80" class="volume-slider">
+                    <span class="volume-percent" id="volumePercent">80%</span>
+                </div>
+
+                <!-- Status -->
+                <div class="status" id="statusText">
+                    ✅ Ready. Select a surah and press play.
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p id="footerText1">🎙️ Recitation: Mishary Rashid Alafasy | 📖 Bengali Audio Translation</p>
+            <p id="footerText2">📱 Allow background playback on Android for best experience</p>
+        </footer>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">⚠️</div>
+            <h3 id="modalTitle">Delete Confirmation</h3>
+            <p id="modalMessage">Delete High Quality version of "Al-Fatiha"?</p>
+            <p id="modalWarning" class="modal-warning">This file is saved offline. You will need internet to stream it again.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel-btn" id="modalCancelBtn">Cancel</button>
+                <button class="modal-btn confirm-btn" id="modalConfirmBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/urls.js"></script>
+    <script src="/js/player.js"></script>
+</body>
+</html>
