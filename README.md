@@ -27,7 +27,7 @@ A beautiful, mobile-friendly Quran audio player featuring **Mishary Rashid Alafa
 - Safari
 - Edge
 
-## 🙏 Credits
+## Credits
 - Recitation: Mishary Rashid Alafasy
 ## 📄 License
 MIT
