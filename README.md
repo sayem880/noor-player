@@ -3,7 +3,7 @@
 A beautiful, mobile-friendly Quran audio player featuring **Mishary Rashid Alafasy** recitation with **Bengali translation audio**.
 
 ## 🌐 Live Player
-[https://asym880.github.io/noor-player](https://asym880.github.io/noor-player)
+[https://sayem880.github.io/noor-player](https://sayem880.github.io/noor-player)
 
 ## ✨ Features
 - 🎙️ Mishary Rashid Alafasy recitation
