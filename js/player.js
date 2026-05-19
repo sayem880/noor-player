@@ -981,22 +981,40 @@ window.addEventListener('beforeunload', () => {
 });
 
 // ==============================================
-// INITIALIZATION
+// INITIALIZATION (FIXED)
 // ==============================================
 async function init() {
     loadAllSettings();
+    
+    // Set UI states without triggering dropdown updates
     updateRepeatButtonText();
     highQualityBtn.classList.toggle('active', currentQuality === 'high');
     lowQualityBtn.classList.toggle('active', currentQuality === 'low');
     engLangBtn.classList.toggle('active', currentLanguage === 'en');
     bnLangBtn.classList.toggle('active', currentLanguage === 'bn');
+    
+    // Update language without triggering dropdown
+    const t = TRANSLATIONS[currentLanguage];
+    siteTitle.textContent = t.siteTitle;
+    siteSubtitle.textContent = t.siteSubtitle;
+    qualityLabel.textContent = t.qualityLabel;
+    lowQualityBtn.textContent = t.lowQuality;
+    highQualityBtn.textContent = t.highQuality;
+    surahLabel.textContent = t.surahLabel;
+    footerText1.textContent = t.footer1;
+    footerText2.textContent = t.footer2;
+    qualityNote.textContent = currentQuality === "high" ? t.qualityNoteHigh : t.qualityNoteLow;
+    
+    // Build dropdown ONCE
     await updateDropdownOptions();
+    
+    // Now set other UI elements that depend on dropdown
+    updateSurahInfo();  // This won't rebuild dropdown, just updates display
+    
     setupDraggableProgress();
     setupMediaSession();
-    updateSurahInfo();
-    updateLanguage();
     updateVolume();
-    const t = TRANSLATIONS[currentLanguage];
+    
     statusText.textContent = t.ready;
 }
 
